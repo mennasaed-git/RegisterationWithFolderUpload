@@ -1,0 +1,12 @@
+{
+    
+      "formHeader" : "Register Today",
+      "filldata" : "Fill in the data below",
+      "name" : "Full Name",
+      "email": "E-mail Address",
+      "phone": "Phone Number",
+      "category": "Merchant Category",
+      "register": "Register"
+     
+    
+  }

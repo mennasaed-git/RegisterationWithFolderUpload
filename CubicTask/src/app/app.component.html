@@ -1,0 +1,70 @@
+<div class="form-body" [className]="textDir">
+  <div class="row">
+      <div class="form-holder">
+          <div class="form-content">
+
+              <div class="form-items">
+            <img class="lang" src="../assets/imgs/language.png" (click)="ChangeLang()">
+
+                  <h3>{{ 'formHeader' | translate}}</h3>
+                  <p>{{'filldata' | translate }}  </p>
+                 
+                  <form class="requires-validation" novalidate *ngIf="User">
+
+                      <div class="col-md-12">
+                         <input class="form-control" type="text" name="name" 
+                         placeholder="{{'name' | translate}}" [(ngModel)]="User.FullName" required>
+                         <div class="valid-feedback">Name field is valid!</div>
+                         <div class="invalid-feedback">Name field cannot be blank!</div>
+                      </div>
+
+                      <div class="col-md-12">
+                          <input class="form-control" type="email" name="email"
+                           placeholder="{{'email' | translate}}" [(ngModel)]="User.Email" required>
+                           <div class="valid-feedback">Email field is valid!</div>
+                           <div class="invalid-feedback">Email field cannot be blank!</div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <input class="form-control" type="number" name="phoneNumber"
+                        [(ngModel)]="User.Phone" placeholder="{{'phone' | translate}}" required>
+                         <div class="valid-feedback">Phone Number field is valid!</div>
+                         <div class="invalid-feedback">Phone Number field cannot be blank!</div>
+                    </div>
+
+                     <div class="col-md-12">
+                          <select class="form-select mt-3" required [(ngModel)]="User.MerchantCategoryId" *ngIf="CurrentLang == 'en'">         
+                                <option *ngFor="let category of Categories" value="category.id" >
+                                  {{category.merchant_category}}</option>       
+                         </select>
+
+                         <select class="form-select mt-3" required [(ngModel)]="User.MerchantCategoryId" *ngIf="CurrentLang == 'ar'">      
+                          <option *ngFor="let category of Categories" value="category.id" >
+                            {{category.merchant_category_ar}}</option>
+                       
+                   </select>
+                          <div class="valid-feedback">You selected a Merchant Category!</div>
+                          <div class="invalid-feedback">Please select a Merchant Category !</div>
+                     </div>
+
+             
+                     <div class="col-md-12">
+                      <input type="file" multiple class="form-control" multiple=""
+                      (change)="onUpload($event)" value="uploadedFiles" webkitdirectory>
+                    
+                     </div>
+
+                     <div class="col-md-12" *ngIf="treeFiles?.length">
+                      <p-tree [value]="treeFiles"></p-tree>
+                     </div>
+
+                      <div class="form-button mt-3" >
+                          <button id="submit" type="submit" class="btn btn-primary" (click)="SubmitForm()">{{'register' | translate}}</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
